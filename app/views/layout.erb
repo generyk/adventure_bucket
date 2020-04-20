@@ -7,19 +7,39 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <title>AdventureBucket</title>
+    <title>SinatraRecipes</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
+<style>
+
+
+    .links {
+       float: right;
+        display: inline;
+        padding-left: 0;
+        margin-right: 4px;
+     }
+
+     .links a:link, .links a:visited, .links a:hover, .links a:active {
+        color: darkblue;
+     }
+</style>
   </head>
   <body>
     <div class="wrapper">
-
+      <% if Helpers.is_logged_in?(session) %>
+        <p class="links"><a href="#" class="logout">Log Out</a></p>
+        <p class="links"><a href="#">My Destinations</a></p>
+        <p class="links"><a href="#">New Destination</a></p>
+        <p class="links"><a href="#">All Destinations</a></p>
+        <p class="links"><a href="#">All Users</a></p>
+      <%end%>
         <%= yield %>
 
       <footer class="branding">
-       <small>&copy; 2020 <strong>AdventureBucket</strong></small>
+        <small>&copy; 2020 <strong>Adventure Bucket</strong></small>
       </footer>
     </div>
 
