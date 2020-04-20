@@ -1,1 +1,7 @@
 <h3><%= @user.username %></h3>
+
+<ul>
+  <% @destinations.each do |destination| %>
+    <li><a href="/destinations/<%=destination.id%>"> <%= destination.name %> </a></li>
+  <%end%>
+</ul>

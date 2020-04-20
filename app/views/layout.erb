@@ -32,14 +32,14 @@
       <% if Helpers.is_logged_in?(session) %>
         <p class="links"><a href="/logout" class="logout">Log Out</a></p>
         <p class="links"><a href="/users/<%=Helpers.current_user(session).id if Helpers.is_logged_in?(session)%>">My Destinations</a></p>
-        <p class="links"><a href="#">New Destination</a></p>
-        <p class="links"><a href="#">All Destinations</a></p>
+        <p class="links"><a href="/destinations/new">New Destination</a></p>
+        <p class="links"><a href="/destinations">All Destinations</a></p>
         <p class="links"><a href="/users">All Users</a></p>
       <%end%>
         <%= yield %>
 
       <footer class="branding">
-        <small>&copy; 2020 <strong>Adventure Bucket</strong></small>
+        <small>&copy; 2020 <strong>AdventureBucket</strong></small>
       </footer>
     </div>
 
