@@ -40,6 +40,16 @@ class DestinationsController < ApplicationController
     end
     erb :'/destinations/edit'
   end
+  
+ 
+  
+  post '/destinations/alpha' do 
+     destination = Destination.create(params)
+     destination.sort_by {|destination| destination }
+    user = Helpers.current_user(session)
+    destination.user = user
+    destination.save
+  end 
 
   patch '/destinations/:id' do
     destination = Destination.find_by(id: params[:id])
@@ -58,5 +68,6 @@ class DestinationsController < ApplicationController
     end
     redirect to '/destinations'
   end
+
 
 end
