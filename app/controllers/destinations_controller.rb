@@ -14,13 +14,16 @@ class DestinationsController < ApplicationController
   end
 
   post '/destinations' do
-    destination = Destination.create(params)
     user = Helpers.current_user(session)
-    destination.user = user
-    destination.save
+    destination = Destination.create(name: params[:name], description: params[:description], user: user) 
     redirect to "/destinations/#{user.id}"
   end
-
+  
+  get '/destinations/alpha' do 
+    @destinations = Destination.all.sort_by {|destination| destination.name}
+     erb :'destinations/alpha'
+  end 
+  
   get '/destinations/:id' do
     if !Helpers.is_logged_in?(session)
       redirect '/'
@@ -40,16 +43,6 @@ class DestinationsController < ApplicationController
     end
     erb :'/destinations/edit'
   end
-  
- 
-  
-  post '/destinations/alpha' do 
-     destination = Destination.create(params)
-     destination.sort_by {|destination| destination }
-    user = Helpers.current_user(session)
-    destination.user = user
-    destination.save
-  end 
 
   patch '/destinations/:id' do
     destination = Destination.find_by(id: params[:id])
