@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end 
 
   post '/signup' do 
-    user = User.create(params)
+    user = User.create(username: params[:username], password: params[:password], email: params[:email])
     if user.valid?
       session[:user_id] = user.id 
       redirect to "/users/#{user.id}"
