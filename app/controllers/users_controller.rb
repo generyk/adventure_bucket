@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id 
       redirect to "/users/#{user.id}"
     else 
+      flash[:account_taken] = "The email you provided is already taken."
       redirect to '/signup'
     end 
   end 
